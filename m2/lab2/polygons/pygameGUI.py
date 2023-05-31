@@ -3,12 +3,14 @@ import math
 import pygame
 
 
-class PygameGUI():  # Something is missing here
+class PygameGUI(Polygons):  # Something is missing here
     # TODO 13: Fix this class so that it inherits from the Polygons class
 
     def __init__(self, num_sides, side_length):
         # TODO 14: Fix this so that it calls the __init__ method of the Polygons class
         # - You will need to use the super() function and pass in the correct arguments
+        super().__init__(self, num_sides, side_length)
+        
         self.screen = pygame.display.set_mode((800, 600))
         self.clock = pygame.time.Clock()
         self.running = True
