@@ -17,18 +17,21 @@ def simple_calculate(operation, num1, num2):
     elif operation == '-':
         # TODO 1: finish this statement
         # - should return the result of subtracting num2 from num1
-        pass  # Replace this line with your code
+        return num1 - num2
 
     elif operation == '*':
         # TODO 2: finish this statement
         # - should return the result of multiplying num1 by num2
-        pass  # Replace this line with your code
+        return num1 * num2
 
     elif operation == '/':
         # TODO 3: finish this statement
         # - should return the result of dividing num1 by num2
         # - remember to raise a ValueError if num2 is 0
-        pass  # Replace this line with your code
+        if num2 == 0:
+            raise ValueError('num2 is 0')
+        return num1/num2
+        
     else:
         raise ValueError(
             'Invalid Operation: Simple Operations are (+, -, *, and /)')
