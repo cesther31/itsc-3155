@@ -1,1 +1,13 @@
 /* TODO 10: Add some styling to make the page look nicer */
+  /* Restyle the h1 tag */
+  h1 {
+    color: #264927;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  /* Restyle the h2 tag */
+  h2 {
+    color: #264927;
+    font-size: 20px;
+  }

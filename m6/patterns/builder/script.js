@@ -17,6 +17,21 @@ class Student {
     }
 
     // TODO 1: Add getMajor(), getGPA(), getDescription(), and getFullName() methods
+    getMajor(){
+        return this.major;
+    }
+
+    getGPA(){
+        return this.gpa;
+    }
+
+    getDescrption(){
+        return this.description;
+    }
+
+    getFullName(){
+        return this.first_name + " " + this.last_name;
+    }
 
 }
 
@@ -39,6 +54,20 @@ class StudentBuilder {
     }
 
     // TODO 2: Add setMajor(), setGPA(), and setDescription() methods
+    setMajor(major){
+        this.major = major;
+        return this;
+    }
+
+    setGPA(gpa){
+        this.gpa = gpa;
+        return this;
+    }
+
+    setDescription(description){
+        this.description = description;
+        return description;
+    }
 
     // Method to return the student object
     build() {
@@ -90,17 +119,39 @@ function writeStudentProfile(description) {
 }
 
 // TODO 3: Add the writeStudentInfo(major, gpa) { ... } function and the writeStudent(student) { ... } function
+function writeStudentInfo(major, gpa){
+    const div = document.createElement("div");
+    div.className = "student-info";
+
+    const p = document.createElement("p");
+    p.textContent = `Major: ${major}, GPA: ${gpa}`;
+    div.appendChild(p);
+
+    return div;
+}
+
+function writeStudent(student){
+    const div = document.createElement("div");
+    div.className = "student"
+
+    div.appendChild(student.writeStudentProfilePicture(student.getFullName()));
+    div.appendChild(student.writeStudentHeader(student.getFirstName(), student.getLastName()));
+    div.writeStudentProfile(student.description());
+    div.writeStudent(student.writeStudentInfo(student.getMajor(), student.getGPA()));
+
+    return div;
+}
 
 function buildPage() {
     const studentBuilder = new StudentBuilder();
 
     // TODO 4: Replace the default information here with your own information or that of an imaginary student
     studentBuilder
-        .setFirstName("Douglas")
-        .setLastName("Thain")
+        .setFirstName("Esther")
+        .setLastName("Chong")
         .setMajor("Computer Science")
         .setGPA(4.0)
-        .setDescription("Douglas is a professor at Notre Dame, where he teaches courses in computer science. He loves writing stellar books on Compiler Construction.")
+        .setDescription("Esther Chong is a Computer Science student.")
 
     // build the student object
     const student = studentBuilder.build();

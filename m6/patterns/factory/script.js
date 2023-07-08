@@ -7,6 +7,17 @@ class Worker {
     }
 
     // TODO 6: Add getName(), getTitle(), and getSalary() methods
+    getName(){
+        return this.name;
+    }
+
+    getTitle(){
+        return this.title;
+    }
+
+    getSalary(){
+        return this.salary;
+    }
 
 }
 
@@ -19,7 +30,13 @@ class WorkerFactory {
     }
 
     // TODO 7: Add createCashier(name) and createManager(name) methods
+    createCashier(name){
+        return new Worker({name, title: 'Cashier', salary: salaryRange(55000)});
+    }
 
+    createManager(name){
+        return new Worker({name, title: 'Manager', salary: salaryRange(55000)});
+    }
 }
 
 function salaryRange(baseSalary) {
@@ -50,6 +67,17 @@ function showEmployees() {
     const row = document.createElement('tr');
 
     // TODO 8: Create the elements for the `name`, `title`, and `salary` table headers and append them to the `row` element
+    const name = document.createElement('p');
+    name.textContent = 'Name';
+    row.appendChild(name);
+    
+    const title = document.createElement('p');
+    title.textContent = 'Title';
+    row.appendChild(title);
+    
+    const salary = document.createElement('th');
+    salary.textContent = 'Salary';
+    row.appendChild(salary);
 
 
     tableHead.appendChild(row);
@@ -81,7 +109,17 @@ function showEmployees() {
             const row = document.createElement('tr');
 
             // TODO 9: Create the elements for the `name`, `title`, and `salary` table cells (data) and append them to the `row` element
+            const nameData = document.createElement('td');
+            nameData.textContent = workerFactory.getFullName();
+            row.appendChild(nameData);
 
+            const titleData = document.createElement('td');
+            titleData.textContent = workerFactory.getJobTitle();
+            row.appendChild(titleData);
+
+            const salaryData = document.createElement('td');
+            salaryData.textContent = workerFactory.getSalary();
+            row.appendChild(salaryData);
         };
     }
     table.appendChild(tableBody);

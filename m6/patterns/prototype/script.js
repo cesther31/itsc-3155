@@ -18,7 +18,22 @@ AnyNumber.prototype.setNumber = function (num) {
 }
 
 // TODO 11: Add getImaginary(), setImaginary(num), add(c), and magnitude() methods
+AnyNumber.prototype.getImaginary = function () {
+    return this.imaginary;
+}
 
+AnyNumber.prototype.setImaginary = function (num){
+    this.imaginary = num;
+}
+
+AnyNumber.prototype.add = function (c){
+    sum = c.getNumber() + c.getImaginary();
+    return new AnyNumber(sum, sum);
+}
+
+AnyNumber.prototype.magnitude() = function (){
+    return Math.sqrt((getNumber()*getNumber())+(getImaginary()*getImaginary()))
+}
 
 // Helper functions for drawing the fractal
 function makeRandomPalette() {
@@ -151,6 +166,85 @@ function reloadColorPalette() {
 // - zoomOut()
 // - increaseBreakPoint()
 // - decreaseBreakPoint()
+function increaseC() {
+    c.real += 0.1;
+    reload();
+  }
+  
+  function decreaseC() {
+    c.real -= 0.1;
+    reload();
+  }
+  
+  function increaseCI() {
+    c.imaginary += 0.1;
+    reload();
+  }
+  
+  function decreaseCI() {
+    c.imaginary -= 0.1;
+    reload();
+  }
+  
+  function changeC() {
+    c.real = getRandomValue(-2, 2);
+    c.imaginary = getRandomValue(-2, 2);
+    reload();
+  }
+  
+  function randomizeColorPalette() {
+    paletteOptions = [makeRandomPalette()];
+    reload();
+  }
+  
+  function increaseMaxIterations() {
+    if (maxIterations < 25600) {
+      maxIterations *= 2;
+      reload();
+    }
+  }
+  
+  function decreaseMaxIterations() {
+    if (maxIterations > 25) {
+      maxIterations /= 2;
+      reload();
+    }
+  }
+  
+  function zoomIn() {
+    xMin -= 0.5;
+    yMin -= 0.5;
+    xMax += 0.5;
+    yMax += 0.5;
+    reload();
+  }
+  
+  function zoomOut() {
+    xMin += 0.5;
+    yMin += 0.5;
+    xMax -= 0.5;
+    yMax -= 0.5;
+    reload();
+  }
+  
+  function increaseBreakPoint() {
+    breakPoint *= 2;
+    reload();
+  }
+  
+  function decreaseBreakPoint() {
+    breakPoint /= 2;
+    reload();
+  }
+  
+  // TODO: Add keybindings for the functions above in the eventHandler function
+  
+  function eventHandler(event) {
+    // TODO: Implement the keybindings for the functions
+  }
+  
+  document.addEventListener("keydown", eventHandler);
+  
 
 function eventHandler(event) {
     var key = event.keyCode;
